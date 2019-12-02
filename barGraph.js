@@ -65,38 +65,7 @@ var setup = function(sampleData)
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("Vertical Axis");     
-    /*
-    svg.append("g")
-    .attr("id", "scatterplot")
-    .attr("transform", "translate("+margins.left+","+margins.top+")");
-    
-    d3.select("#scatterplot")
-    .selectAll("circle")
-    .data(sampleData)
-    .enter()
-    .append("circle")
-    
-    drawCircles(sampleData, xScale, yScale, rScale, cScale)
-    
-    makeButton(sampleData, xScale, yScale, rScale, cScale) */
 }
 
-/* var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
-{
-            d3.select("#scatterplot")        
-            .selectAll("circle")
-            .data(dataArray)
-            //.enter()
-            //.append("circle")
-            .transition()
-            .duration(1000)
-            .attr("cx", function(d)
-                 {return xScale(d.run)})
-            .attr("cy", function(d)
-                 {return yScale(d.rise)})
-            .attr("r", function(d)
-                 {return rScale(d.width)})
-            .attr("fill", function(d)
-                 {return cScale(d.name)})
-} */
+
  setup(sampleData) 
