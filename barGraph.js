@@ -78,3 +78,22 @@ var setup = function(sampleData)
     drawCircles(sampleData, xScale, yScale, rScale, cScale)
     
 }
+
+var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
+{
+            d3.select("#scatterplot")        
+            .selectAll("circle")
+            .data(dataArray)
+            //.enter()
+            //.append("circle")
+            .transition()
+            .duration(1000)
+            .attr("cx", function(d)
+                 {return xScale(d.run)})
+            .attr("cy", function(d)
+                 {return yScale(d.rise)})
+            .attr("r", function(d)
+                 {return rScale(d.width)})
+            .attr("fill", function(d)
+                 {return cScale(d.name)})
+}
