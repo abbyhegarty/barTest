@@ -67,5 +67,4 @@ var setup = function(sampleData)
       .text("Vertical Axis");     
 }
 
-
  setup(sampleData) 
