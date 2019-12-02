@@ -67,7 +67,7 @@ var setup = function(sampleData)
       .attr("dy", "1em")
       .style("text-anchor", "middle")
       .text("Vertical Axis");   
-  
+ 
  //maybe some bars? 
   svg.append("g")
     .attr("id", "bar")
@@ -88,6 +88,7 @@ var setup = function(sampleData)
       { return d.run*20;})
     .attr("fill", function(d)
       { return d.rise;})  
+      
 }
 
- setup(sampleData) 
+setup(sampleData)
