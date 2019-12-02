@@ -25,13 +25,15 @@ var setup = function(sampleData)
                     .domain([0,20])
                     .range([0, width])
     
+     var xScale = d3.scaleBand()
+      .range([0, width])
+      .domain(sampleData.map((s) => s.name))
+      .padding(0.4)
+     
     var yScale = d3.scaleLinear()
                     .domain([0,20])
                     .range([height-5,0])
-    
-    var rScale = d3.scaleLinear()
-                    .domain([0,10])
-                    .range([0,50])
+ 
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
     
