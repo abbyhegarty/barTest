@@ -28,10 +28,21 @@ var setup = function(sampleData)
                     .domain([0,20])
                     .range([height-5,0])
     
+    var rScale = d3.scaleLinear()
+                    .domain([0,10])
+                    .range([0,50])
+    
+    var cScale = d3.scaleOrdinal(d3.schemeTableau10)
+    
     var xAxis = d3.axisBottom(xScale)
     var yAxis = d3.axisLeft(yScale)
     
-     svg.append("g")
+    var svg = d3.select("body")
+    .append("svg")
+    .attr("width", screen.width)
+    .attr("height", screen.height);
+    
+    svg.append("g")
     .attr("id","xAxis")
     .attr("transform","translate("+margins.left+","+(margins.top+height)+")")
     .call(xAxis)
@@ -52,5 +63,17 @@ var setup = function(sampleData)
       .attr("x", 0-(height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Vertical Axis");        
-    }
+      .text("Vertical Axis");     
+    
+    svg.append("g")
+    .attr("id", "scatterplot")
+    .attr("transform", "translate("+margins.left+","+margins.top+")");
+    
+    d3.select("#scatterplot")
+    .selectAll("circle")
+    .data(sampleData)
+    .enter()
+    .append("circle")
+    
+    drawCircles(sampleData, xScale, yScale, rScale, cScale)
+    
