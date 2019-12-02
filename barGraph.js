@@ -13,6 +13,7 @@ var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
 
 var setup = function(sampleData)
 {
+    
     var screen = {width: 800, height: 500}
     
     var margins = {top: 25, bottom: 35, left: 50, right: 25}
@@ -77,6 +78,7 @@ var setup = function(sampleData)
     
     drawCircles(sampleData, xScale, yScale, rScale, cScale)
     
+    makeButton(sampleData, xScale, yScale, rScale, cScale)
 }
 
 var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
@@ -97,3 +99,4 @@ var drawCircles = function(dataArray, xScale, yScale, rScale, cScale)
             .attr("fill", function(d)
                  {return cScale(d.name)})
 }
+ setup(sampleData) 
