@@ -66,7 +66,28 @@ var setup = function(sampleData)
       .attr("x", 0-(height / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
-      .text("Vertical Axis");     
+      .text("Vertical Axis");   
+  
+ //maybe some bars? 
+  svg.append("g")
+    .attr("id", "bar")
+    .attr("transform", "translate("+margins.left+","+margins.top+")");
+    
+    d3.select("#bar")
+    .selectAll("circle")
+    .selectAll("rect")
+     .data(sampleData)
+     .enter()
+     .append("rect")
+     .attr("x", function(d,i)
+      { return i*barWidth;})
+    .attr("y", function (d)
+      { return height - d.run*20;})
+    .attr("width", barWidth)
+    .attr("height", function(d)
+      { return d.run*20;})
+    .attr("fill", function(d)
+      { return d.rise;})  
 }
 
  setup(sampleData) 
