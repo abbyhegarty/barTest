@@ -77,3 +77,4 @@ var setup = function(sampleData)
     
     drawCircles(sampleData, xScale, yScale, rScale, cScale)
     
+}
