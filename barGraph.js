@@ -74,7 +74,6 @@ var setup = function(sampleData)
     .attr("transform", "translate("+margins.left+","+margins.top+")");
     
     d3.select("#bar")
-    .selectAll("circle")
     .selectAll("rect")
      .data(sampleData)
      .enter()
