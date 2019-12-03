@@ -37,6 +37,7 @@ var setup = function(sampleData)
     
     var cScale = d3.scaleOrdinal(d3.schemeTableau10)
     
+    //axis
     var xAxis = d3.axisBottom(xScale)
     var yAxis = d3.axisLeft(yScale)
     
@@ -79,15 +80,38 @@ var setup = function(sampleData)
      .enter()
      .append("rect")
      .attr("x", function(d,i)
-      { return i*70 + 40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
-      .attr("y", function (d)
-      { return height - d.run*20;}) //for y data maybe make a new column in csv for it? 1-100
-    .attr("width", 20)
-    .attr("height", 100)
+      { return i*70 +40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
+    .attr("y", function (d)
+      { return height - d.rise;})
+    .attr("width", 40)
+    .attr("height", function (d) 
+         { return  d.rise;})
    // .attr("width", barWidth)
   //  .attr("height", function(d)
    //   { return d.run*20;})
-    .attr("fill", "teal")  
+    .attr("fill", "teal") 
+    .style("opacity", .5) 
+    
+     svg.append("g")
+    .attr("id", "bar1")
+    .attr("transform", "translate("+margins.left+","+margins.top+")");
+    
+    d3.select("#bar1")
+    .selectAll("rect")
+     .data(sampleData)
+     .enter()
+    .append("rect")
+     .attr("x", function(d,i)
+      { return i*70 +40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
+    .attr("y", function (d)
+      { return height - d.run;})
+    .attr("width", 20)
+    .attr("height", function(d)
+         { return d.run;})
+   // .attr("width", barWidth)
+  //  .attr("height", function(d)
+   //   { return d.run*20;})
+    .attr("fill", "red")
       
 }
 
