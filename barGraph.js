@@ -27,7 +27,7 @@ var setup = function(sampleData)
     
      var xScale = d3.scaleBand()
       .range([0, width])
-      .domain(sampleData.map((s) => s.name))
+      .domain(sampleData.map(function(d) {return (d.name)}))
       .padding(0.4)
      
     var yScale = d3.scaleLinear()
