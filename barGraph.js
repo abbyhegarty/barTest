@@ -1,3 +1,4 @@
+  
 var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
                 {name: "sam", rise: 15, run: 7, width: 7},
                 {name: "pebbles", rise: 18, run: 11, width: 9},
@@ -16,7 +17,7 @@ var setup = function(sampleData)
     
     var screen = {width: 800, height: 500}
     
-    var margins = {top: 25, bottom: 35, left: 50, right: 25}
+    var margins = {top: 50, bottom: 35, left: 50, right: 25}
     
     var width = screen.width - margins.left - margins.right
     var height = screen.height - margins.top - margins.bottom
@@ -112,7 +113,89 @@ var setup = function(sampleData)
   //  .attr("height", function(d)
    //   { return d.run*20;})
     .attr("fill", "red")
-     
+    
+    
+    
+
+
+var drawLegend = function(sampleData)
+{
+ 
+  var width = 200;
+  var height = 200;
+  var boxWidth = 40; 
+    
+  d3.select("svg")
+    .append("g")
+    .attr("id","legend")
+   .attr("width", width)
+    .attr("height", height)
+   // .attr("transform","translate(" +(screen.width-margins.right)+"," + (margins.top)+")"); 
+
+var gs = d3.select("#legend")
+    .selectAll("g")
+    .data(sampleData)
+    .enter()
+    .append("g")
+    .attr("fill",function(d)
+         { return cScale(d.run);})
+    .attr("transform",function(d,i)
+    
+    {
+          return "translate(700,"+(i*15)+")"; //changing # will space each individual rect + text more
+    })
+  .attr("width", boxWidth)
+    .attr("height", boxWidth-3)
+    
+    
+gs.append("rect")
+    .attr("width",10) //size of rectangles
+    .attr("height",10)
+   
+
+gs.append("text")
+    .text(function(d)
+         { return d.run })
+    .attr("x",15)
+    .attr("y",10)
+    .attr("fill",black)
+    
+ //kdeans   
+/*var width = 200;
+  var height = 200;
+  var boxWidth = 15;
+  var svg = d3.select(idname)
+              .attr("height", height)
+              .attr("width", width);
+  svg.selectAll("rect")
+     .data(colorData)
+     .enter()
+     .append("rect")
+     .attr("x", function(d,i)
+      { return 25;})
+    .attr("y", function (d, i)
+      { return (i+1)*15 + 10;})
+    .attr("width", boxWidth)
+    .attr("height", boxWidth-3)
+    .attr("fill", function(d)
+      { return d.color;})
+
+svg.selectAll("text")
+   .data(colorData)
+   .enter()
+   .append("text")
+   .text(function(d)
+      { return d.color;})
+   .attr("x", function(d,i)
+      { return 45})
+   .attr("y", function(d, i)
+      { return (i+1)*15 + 22;})
+   .attr("fill", "black")
+    */
+    
 }
+drawLegend(sampleData,cScale)
+}
+
 
 setup(sampleData)
