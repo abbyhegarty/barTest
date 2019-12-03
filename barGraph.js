@@ -1,14 +1,13 @@
-  
-var sampleData= [{name: "fred", rise: 12, run: 5, width: 6},
-                {name: "sam", rise: 15, run: 7, width: 7},
-                {name: "pebbles", rise: 18, run: 11, width: 9},
-                {name: "barney", rise: 8, run: 15, width: 6},
-                {name: "george", rise: 9, run: 17, width: 10},
-                {name: "green", rise: 13, run: 19, width: 3},
-                {name: "orange", rise: 5, run: 15, width: 2},
-                {name: "red", rise: 3, run: 12, width: 1},
-                {name: "yellow", rise: 1, run: 3, width: 5},
-                {name: "purple", rise: 12, run: 7, width: 6},]
+ var sampleData= [{name: "grant", age: 21, toy: 25, home: 6},
+                {name: "brooke", age: 18, toy: 10, home: 17},
+                {name: "hannah", age: 18, toy: 11, home: 21},
+                {name: "salma", age: 8, toy: 16, home: 6},
+                {name: "lucia", age: 14, toy: 19, home: 10},
+                {name: "john", age: 13, toy: 19, home: 3},
+                {name: "mike", age: 5, toy: 19, home: 2},
+                {name: "jessie", age: 3, toy: 12, home: 11},
+                {name: "pat", age: 20, toy: 3, home: 25},
+                {name: "ian", age: 12, toy: 7, home: 16},]
 
 
 
@@ -32,7 +31,7 @@ var setup = function(sampleData)
       .padding(0.4)
      
     var yScale = d3.scaleLinear()
-                    .domain([0,20])
+                    .domain([0,30])
                     .range([height-5,0])
  
     
@@ -83,10 +82,10 @@ var setup = function(sampleData)
      .attr("x", function(d,i)
       { return i*70 +40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
     .attr("y", function (d)
-      { return height - yScale(d.rise);})
+      { return height - yScale(d.age);})
     .attr("width", 40)
     .attr("height", function (d) 
-         { return  yScale(d.rise);})
+         { return  yScale(d.age);})
    // .attr("width", barWidth)
   //  .attr("height", function(d)
    //   { return d.run*20;})
@@ -105,10 +104,10 @@ var setup = function(sampleData)
      .attr("x", function(d,i)
       { return i*70 +40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
     .attr("y", function (d)
-      { return height - yScale(d.run);})
+      { return height - yScale(d.toy);})
     .attr("width", 20)
     .attr("height", function(d)
-         { return yScale(d.run);})
+         { return yScale(d.toy);})
    // .attr("width", barWidth)
   //  .attr("height", function(d)
    //   { return d.run*20;})
@@ -138,7 +137,7 @@ var gs = d3.select("#legend")
     .enter()
     .append("g")
     .attr("fill",function(d)
-         { return cScale(d.run);})
+         { return cScale(d.home);})
     .attr("transform",function(d,i)
     
     {
@@ -155,7 +154,7 @@ gs.append("rect")
 
 gs.append("text")
     .text(function(d)
-         { return d.run })
+         { return d.home })
     .attr("x",15)
     .attr("y",10)
     .attr("fill",black)
