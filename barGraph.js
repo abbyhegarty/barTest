@@ -79,9 +79,9 @@ var setup = function(sampleData)
      .enter()
      .append("rect")
      .attr("x", function(d,i)
-      { return i*70 + 40;})
-    .attr("y", function (d)
-      { return height - d.run*20;})
+      { return i*70 + 40;}) //more than 20, match to my x scale or whatev, 70 to space, 40 moves it out 
+      .attr("y", function (d)
+      { return height - d.run*20;}) //for y data maybe make a new column in csv for it? 1-100
     .attr("width", 20)
     .attr("height", 100)
    // .attr("width", barWidth)
