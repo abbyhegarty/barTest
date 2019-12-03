@@ -112,7 +112,7 @@ var setup = function(sampleData)
   //  .attr("height", function(d)
    //   { return d.run*20;})
     .attr("fill", "red")
-      
+     
 }
 
 setup(sampleData)
