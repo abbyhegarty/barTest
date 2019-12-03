@@ -76,6 +76,8 @@ var setup = function(sampleData)
     svg.append("g")
     .attr("id", "bar1")
     .attr("transform", "translate("+margins.left+","+margins.top+")");
+    
+    makeGraph(sampleData,xScale,yScale,cScale);
 }
 
 var makeGraph = function(sampleData,xScale,yScale,cScale) {
@@ -142,5 +144,5 @@ var makeGraph = function(sampleData,xScale,yScale,cScale) {
       
 }
 
-makeGraph(sampleData)
+
 setup(sampleData)
